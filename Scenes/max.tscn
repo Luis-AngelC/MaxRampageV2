@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://u8mjt0awdnfp"]
+
+[ext_resource type="Texture2D" uid="uid://duq5k3xkkdp8m" path="res://Assets/Animations/MAXcharacter-Sheet.png" id="1_4tb1n"]
+[ext_resource type="Texture2D" uid="uid://cbkorytnlwms0" path="res://Assets/Animations/Max Run-Sheet.png" id="2_oi4fu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84jxt"]
+atlas = ExtResource("1_4tb1n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqdvk"]
+atlas = ExtResource("1_4tb1n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af3in"]
+atlas = ExtResource("1_4tb1n")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsqpy"]
+atlas = ExtResource("1_4tb1n")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4dwv"]
+atlas = ExtResource("1_4tb1n")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c46np"]
+atlas = ExtResource("2_oi4fu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy0f6"]
+atlas = ExtResource("2_oi4fu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63upg"]
+atlas = ExtResource("2_oi4fu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lon1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84jxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqdvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af3in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsqpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4dwv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c46np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy0f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63upg")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftycq"]
+size = Vector2(7, 16)
+
+[node name="max" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(10, -10)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_lon1q")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.841899
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_ftycq")
