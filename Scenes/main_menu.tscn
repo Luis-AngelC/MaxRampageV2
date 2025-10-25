@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c66srnycmvhcg"]
+[gd_scene load_steps=20 format=3 uid="uid://c66srnycmvhcg"]
 
 [ext_resource type="Script" uid="uid://ctt3uowpbe8he" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://4sjvmj6ypvow" path="res://Assets/Images/Screenshot 2025-10-24 144337.png" id="1_48xlc"]
 [ext_resource type="FontFile" uid="uid://ro2i4v4tpqon" path="res://Assets/Fonts/Fipps-Regular.otf" id="2_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://duq5k3xkkdp8m" path="res://Assets/Animations/MAXcharacter-Sheet.png" id="4_ce3w2"]
+[ext_resource type="FontFile" uid="uid://clbf2vmnu0ghx" path="res://Assets/Fonts/hachicro.TTF" id="5_n45e2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce3w2"]
 texture = ExtResource("1_48xlc")
@@ -87,6 +89,49 @@ anti_aliasing_size = 0.74
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_48xlc"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n45e2"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfnp"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp0ys"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhxw7"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trj04"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16hvj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n45e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opfnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp0ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhxw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trj04")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="Main Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -112,17 +157,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -218.0
-offset_top = -246.0
-offset_right = 220.0
-offset_bottom = -157.0
+offset_left = -187.5
+offset_top = -145.0
+offset_right = 187.5
+offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.8156863, 0.16862746, 0.15686275, 1)
 theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("2_1ehe0")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 28
 text = "MAX's RAMPAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
 libraries = {
@@ -132,18 +179,20 @@ autoplay = "Parpadeo"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.694
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -105.0
-offset_top = -69.0
-offset_right = 105.0
-offset_bottom = 105.0
+anchor_bottom = 0.694
+offset_left = -109.67749
+offset_top = -98.84
+offset_right = 109.67749
+offset_bottom = 57.160004
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 12
+grow_vertical = 0
+theme_override_constants/separation = 9
+alignment = 1
+metadata/_edit_group_ = true
 
 [node name="Jugar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -155,7 +204,7 @@ theme_override_colors/font_pressed_color = Color(0.5223596, 0.08498705, 0.079761
 theme_override_colors/font_hover_color = Color(0.5538519, 0.092729844, 0.08718536, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_1ehe0")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_n45e2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_48xlc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1ehe0")
@@ -173,7 +222,7 @@ theme_override_colors/font_pressed_color = Color(0.5223596, 0.08498705, 0.079761
 theme_override_colors/font_hover_color = Color(0.5538519, 0.092729844, 0.08718536, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_1ehe0")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_n45e2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_48xlc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1ehe0")
@@ -191,13 +240,47 @@ theme_override_colors/font_pressed_color = Color(0.5223596, 0.08498705, 0.079761
 theme_override_colors/font_hover_color = Color(0.5538519, 0.092729844, 0.08718536, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_1ehe0")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_n45e2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_48xlc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1ehe0")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_48xlc")
 text = "Salir"
 icon_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer2"]
+position = Vector2(-194.00002, 6.0000024)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_16hvj")
+autoplay = "default"
+frame_progress = 0.26827115
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer2/AnimatedSprite2D"]
+offset_left = -21.995
+offset_top = 15.0
+offset_right = 23.005
+offset_bottom = 37.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 14
+text = "MAX"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="VBoxContainer/configuracion" to="." method="_on_configuracion_pressed"]

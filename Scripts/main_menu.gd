@@ -7,13 +7,13 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 # config de botones
 
 func _on_jugar_pressed() -> void:
-	pass # Replace with function body.
+	pass
 
 
 func _on_configuracion_pressed() -> void:
