@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://di6p48wj8by4j"]
+
+[ext_resource type="Texture2D" uid="uid://h1jeug0jgwt1" path="res://Assets/Animations/Slime-Sheet.png" id="1_jokqx"]
+[ext_resource type="Script" uid="uid://cfxsw476wj0q8" path="res://Scripts/enemigo.gd" id="1_swwnm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_swwnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swwnm"]
+atlas = ExtResource("1_jokqx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiwxb"]
+atlas = ExtResource("1_jokqx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paq7w"]
+atlas = ExtResource("1_jokqx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4si1"]
+atlas = ExtResource("1_jokqx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gljc"]
+atlas = ExtResource("1_jokqx")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vblni"]
+atlas = ExtResource("1_jokqx")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e388w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swwnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiwxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paq7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4si1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gljc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vblni")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4o34"]
+radius = 9.0
+
+[node name="Slime" type="Node2D"]
+
+[node name="enemigo" type="CharacterBody2D" parent="." groups=["enemy"]]
+position = Vector2(-1, 0)
+collision_layer = 4
+script = ExtResource("1_swwnm")
+health = 3
+
+[node name="Hitbox" type="Area2D" parent="enemigo"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemigo/Hitbox"]
+visible = false
+position = Vector2(2, -1)
+shape = SubResource("CircleShape2D_swwnm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemigo"]
+position = Vector2(3, -1)
+sprite_frames = SubResource("SpriteFrames_e388w")
+autoplay = "default"
+frame_progress = 0.19847208
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemigo"]
+visible = false
+position = Vector2(50, 16)
+shape = SubResource("CircleShape2D_r4o34")
+
+[connection signal="area_entered" from="enemigo/Hitbox" to="enemigo" method="_on_hitbox_area_entered"]

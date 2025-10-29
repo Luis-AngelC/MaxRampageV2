@@ -30,14 +30,17 @@ var TARGET_THRESHOLD: float = 10.0  # Distancia mínima para evitar temblores
 
 func _ready():
 	add_to_group("player")
-	pass
-
-
+	var hud = get_tree().current_scene.get_node("HUD")
+	hud.actualizar_corazones(Current_health, Max_health)
+		
 func recibir_dano(daño):
 	Current_health = max(Current_health - daño, 0)
+	var hud = get_tree().current_scene.get_node("HUD")
+	hud.actualizar_corazones(Current_health, Max_health)
 	print("Has recibido daño!!")
 	if Current_health == 0:
 		print("Game Over")
+		GameState.game_over()		
 
 func curar():
 	if Current_health < Max_health:
@@ -107,18 +110,20 @@ func shoot(target):
 	if bullet_scene == null:
 		print("Error: No se ha asignado la escena de bala")
 		return
-	
 	can_shoot = false
+	
+	# Crear la bala
 	var bullet = bullet_scene.instantiate()
-	bullet.global_position = global_position
 	
 	# Dirección hacia el enemigo
 	var direction = (target.global_position - global_position).normalized()
-	bullet.direction = direction
 	
-	# Añadir la bala a la escena
+	# Añadir la bala a la escena PRIMERO
 	get_parent().add_child(bullet)
 	
+	# Luego establecer posición y dirección
+	bullet.global_position = global_position
+	bullet.direction = direction
 	# Cooldown de disparo
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true

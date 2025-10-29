@@ -15,6 +15,10 @@ run/main_scene="uid://c66srnycmvhcg"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameState="*res://Scripts/Globals/GameState.gd"
+
 [display]
 
 window/size/viewport_width=640
