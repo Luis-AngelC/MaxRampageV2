@@ -13,7 +13,7 @@ func _process(_delta: float) -> void:
 # config de botones
 
 func _on_jugar_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://Scenes/ruinas_de_acero.tscn")
 
 
 func _on_configuracion_pressed() -> void:

@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://u8mjt0awdnfp"]
+[gd_scene load_steps=15 format=3 uid="uid://u8mjt0awdnfp"]
 
 [ext_resource type="Texture2D" uid="uid://duq5k3xkkdp8m" path="res://Assets/Animations/MAXcharacter-Sheet.png" id="1_4tb1n"]
+[ext_resource type="Script" uid="uid://b5qbjusrs31lq" path="res://Scripts/max.gd" id="1_oi4fu"]
 [ext_resource type="Texture2D" uid="uid://cbkorytnlwms0" path="res://Assets/Animations/Max Run-Sheet.png" id="2_oi4fu"]
+[ext_resource type="Script" uid="uid://clng5ln3httt4" path="res://Scripts/camera_2d.gd" id="4_84jxt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_84jxt"]
 atlas = ExtResource("1_4tb1n")
@@ -54,7 +56,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_b4dwv")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 8.0
 }, {
 "frames": [{
@@ -68,8 +70,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_63upg")
 }],
 "loop": true,
-"name": &"Run",
-"speed": 8.0
+"name": &"run",
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftycq"]
@@ -78,16 +80,21 @@ size = Vector2(7, 16)
 [node name="max" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(124, 57)
-metadata/_edit_group_ = true
+position = Vector2(299, 52)
+script = ExtResource("1_oi4fu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_lon1q")
-animation = &"Idle"
-autoplay = "Idle"
-frame_progress = 0.841899
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 visible = false
 position = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_ftycq")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(1, 1)
+zoom = Vector2(1.195, 1.195)
+script = ExtResource("4_84jxt")
